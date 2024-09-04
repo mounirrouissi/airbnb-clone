@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    volumes:
+      - ~/volumes/mounir/postgresql/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=mounir
+      - POSTGRES_USER=mounir
+    ports:
+      - 127.0.0.1:5433:5432
