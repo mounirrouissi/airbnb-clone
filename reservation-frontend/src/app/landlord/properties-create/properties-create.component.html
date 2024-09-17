@@ -1,0 +1,54 @@
+<div class="px-4 py-4 bg-white shadow rounded-lg">
+  @switch (this.currentStep.id) {
+    @case (CATEGORY) {
+      <app-category-step [categoryName]="newListing.category"
+                         (categoryChange)="onCategoryChange($event)"
+                         (stepValidityChange)="onValidityChange($event)"
+                         class="mb-5">
+      </app-category-step>
+    }
+    @case (LOCATION) {
+      <app-location-step [location]="newListing.location"
+                         (locationChange)="onLocationChange($event)"
+                         (stepValidityChange)="onValidityChange($event)"
+                         class="mb-5">
+      </app-location-step>
+    }
+    @case (INFO) {
+      <div class="mb-5">
+        <h1 class="mb-1 text-2xl font-semibold text-gray-800">Share some basics about your place</h1>
+        <h2 class="mt-0 text-xl font-medium text-gray-600">You'll add more details later, like bed types.</h2>
+        <app-info-step [infos]="newListing.infos"
+                       (infoChange)="onInfoChange($event)"
+                       (stepValidityChange)="onValidityChange($event)"
+                       class="mb-5"></app-info-step>
+      </div>
+    }
+    @case (PHOTOS) {
+      <app-picture-step [pictures]="newListing.pictures"
+                        (picturesChange)="onPictureChange($event)"
+                        (stepValidityChange)="onValidityChange($event)"
+                        class="mb-5"></app-picture-step>
+    }
+    @case (DESCRIPTION) {
+      <app-description-step [description]="newListing.description"
+                            (descriptionChange)="onDescriptionChange($event)"
+                            (stepValidityChange)="onValidityChange($event)"
+                            class="mb-5"></app-description-step>
+    }
+    @case (PRICE) {
+      <app-price-step [price]="newListing.price"
+                      (priceChange)="onPriceChange($event)"
+                      (stepValidityChange)="onValidityChange($event)"
+                      class="mb-5"></app-price-step>
+    }
+  }
+</div>
+<app-footer-step [currentStep]="currentStep"
+                 [isAllStepsValid]="isAllStepsValid()"
+                 [loading]="loadingCreation"
+                 (finish)="createListing()"
+                 (next)="nextStep()"
+                 (previous)="previousStep()"
+                 class="mt-5 bg-gray-100 py-4 px-4 rounded-lg shadow">
+</app-footer-step>

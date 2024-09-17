@@ -1,0 +1,13 @@
+@if (isHome) {
+  <div class="categories flex justify-content-center mx-8 bg-blue-50 rounded-xl shadow-lg p-2">
+    @for (category of categories; track category.technicalName) {
+      @if (category.technicalName !== 'ALL') {
+        <div class="flex flex-column items-center pb-2 category cursor-pointer hover:bg-blue-100 transition-colors duration-300 rounded-lg px-4 py-1 mx-2"
+             (click)="onChangeCategory(category)" [class.category-activated]="category.activated">
+          <fa-icon class="mb-2 text-blue-600 text-xl" [icon]="category.icon"></fa-icon>
+          <div title="{{category.displayName}}" class="name text-gray-700 font-medium text-sm">{{ category.displayName }}</div>
+        </div>
+      }
+    }
+  </div>
+}

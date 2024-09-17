@@ -1,0 +1,27 @@
+<div class="mb-3">
+  <h1 class="mb-1 text-2xl font-bold">Give Your House a Title and Description</h1>
+  <h2 class="mt-0 text-xl font-semibold">Keep titles short and sweet. You can always change it later.</h2>
+
+  <form #formDescription="ngForm" novalidate class="w-full mt-4">
+    <div class="mb-3">
+      <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+      <input #titleInput="ngModel" id="title" name="title" placeholder="Enter a title" required
+             class="mt-1 block w-full p-inputtext-lg border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             type="text" pInputText [ngModel]="description().title.value" (ngModelChange)="onTitleChange($event)"/>
+      @if (titleInput.dirty && titleInput.invalid) {
+        <div id="title-required" class="text-sm text-red-600">Title is required</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+      <textarea #descriptionInput="ngModel" id="description" name="description" placeholder="Add a summary" required
+                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                rows="5" cols="30" pInputTextarea [ngModel]="description().description.value"
+                (ngModelChange)="onDescriptionChange($event)"></textarea>
+      @if (descriptionInput.dirty && descriptionInput.invalid) {
+        <div id="description-required" class="text-sm text-red-600">Description is required</div>
+      }
+    </div>
+  </form>
+</div>
